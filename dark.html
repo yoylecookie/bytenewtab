@@ -1,0 +1,122 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>New Tab
+        </title>
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        
+          body {
+              background-color:#2a2a2a;
+              text-align:center;
+          } 
+          
+          input {
+              margin-top:20px;
+              width:50%;
+              height:50px;
+              border-radius:15px;
+              border:#c6c6c6 solid 3px;
+              box-shadow:0px 0px 50px #000000a1;
+              transition-duration:0.4s;
+          }
+          
+          input:hover {
+              margin-top:20px;
+              width:55%;
+              height:50px;
+              border-radius:15px;
+              border:#c6c6c6 solid 3px;
+              box-shadow:0px 0px 50px black;
+          }
+          
+          .srch:hover {
+          }
+          
+          .shortcut {
+              border:#c6c6c6 solid 3px;
+              border-radius:15px;
+              box-shadow:0px 0px 50px black;
+              padding:40px 30px 5px 30px;
+              display:inline;
+              margin-left:5px;
+              background-color:white;
+          }
+          
+          a {
+              color:black;
+              text-decoration:none;
+              font-family:"Barlow Semi Condensed", sans-serif;
+          }
+        </style>
+    </head>
+    <body>
+        
+        
+<input id="shrt" style="display:none;" placeholder="shortcut::">
+        <button id="imp" onclick="importSC()" style="display:none;">import</button><br><br><br><br>
+        
+        <img src="https://file.garden/Z_Zkhskjxktxt43S/Byte%20Studios/byte%20logo.png?v=1749666378121" style="filter: brightness(100%); margin-top:140px;" width="200px">
+        <br><br>
+        <input id="text">
+        <img src="https://file.garden/Z_Zkhskjxktxt43S/abcdefghijklmnopqrztuvexyz/serch.svg" style="position:relative; top:25px; left:15px; box-shadow:0px 0px 50px black; border-radius:50px; background-color:white; 
+        border:#c6c6c6 solid 3px;
+              transition-duration:0.4s;" class="srch" onclick="search()"><br><br><br><br>
+              
+              <div id="shortcuts123">
+                  
+              <a href="https://site-15p.pages.dev" target="_blank"><div class="shortcut">
+                  <img src="https://file.garden/Z_Zkhskjxktxt43S/Byte%20Studios/byte%20logo.png?v=1749666378121" width="50px" style="filter: brightness(60%);">
+                  <p style="display:inline; position:relative; bottom:15px;">Byte Studios</p></div></a>
+                  
+                  <a href="https://www.youtube.com" target="_blank"><div class="shortcut">
+                  <img src="https://file.garden/Z_Zkhskjxktxt43S/abcdefghijklmnopqrztuvexyz/playbtn.svg" width="50px" style="position:relative; bottom:5px">
+                  <p style="display:inline; position:relative; bottom:15px;">Youtube</p></div></a><br><br><br>
+                  
+                  <a href="https://discord.com/" target="_blank"><div style="border:#c6c6c6 solid 3px;
+              border-radius:15px;
+              box-shadow:0px 0px 50px black;
+              padding:40px 50px 5px 10px;
+              display:inline;
+              margin-left:5px;
+              background-color:white;">
+                  <img src="https://logos-world.net/wp-content/uploads/2020/12/Discord-Emblem.png" width="90px" style="">
+                  <p style="display:inline; position:relative; bottom:15px;">Discord</p></div></a>
+                  
+                  <a href="https://scratch.mit.edu" target="_blank"><div class="shortcut">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Scratch.logo.S.png" width="50px" style="position:relative; bottom:0px">
+                  <p style="display:inline; position:relative; bottom:15px;">Scratch</p></div></a>
+
+              </div>
+        <script>
+        let shortc = localStorage.getItem("shortcuts");
+        if (shortc !== null) {
+            document.getElementById("shortcuts123").innerHTML = shortc;
+        }
+            
+
+            
+            function search() {
+              let q;
+              q = document.getElementById("text").value;
+                if (q.includes("shortcut::")) {
+                   document.getElementById('shrt').style.display = "block";
+                    document.getElementById('imp').style.display = "block";
+                } else {
+              window.open("https://search.brave.com/search?q=" + q + "&source=web");
+                }
+          }
+
+            function importSC() {
+                let html;
+                html = document.getElementById('shrt').value;
+                document.getElementById("shortcuts123").innerHTML = html;
+                localStorage.setItem("shortcuts", html);
+                document.getElementById('shrt').style.display = "none";
+                document.getElementById('imp').style.display = "none";
+                
+                
+            }
+        </script>
+    </body>
+</html>
