@@ -1,2 +1,29 @@
 <!DOCTYPE html>
 <head><title>New Tab - Settings</title><style></style></head>
+<body>
+    <h1>Settings</h1><hr><hr>
+    <h2>Theme</h2>
+    <button>Dark</button>
+    <button>Light</button><p>currently doesn't work!</p>
+    <hr>
+    <h2>Shortcuts</h2>
+    <p>W.I.P</p>
+    <hr>
+    <h2>Search Engine</h2>
+    <select id="sengine">
+        <option value = "https://search.brave.com/search?q=">Brave</option>
+        <option value = "https://yandex.com/search/?text=">Yandex</option>
+        <option value = "https://google.com/search?q=">Google</option>
+        <option value = "https://www.ecosia.org/search?q=">Ecosia</option>
+        <option value = "https://www.startpage.com/do/search?q=">Startpage</option>
+    </select>
+    <button onclick="savesengine()">save</button>
+    <hr>
+    <p>test123</p>
+    <script>
+      function savesengine() {
+          let searchengine = document.getElementById("sengine");
+          localStorage.setItem("sengineURL", searchengine.value);
+      }  
+    </script>
+</body>
