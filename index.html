@@ -14,7 +14,7 @@
           input {
               margin-top:20px;
               width:50%;
-              height:50px;
+              height:45px;
               border-radius:15px;
               border:#c6c6c6 solid 3px;
               box-shadow:0px 0px 50px #0000004b;
@@ -24,13 +24,20 @@
           input:hover {
               margin-top:20px;
               width:55%;
-              height:50px;
+              height:40px;
               border-radius:15px;
               border:#c6c6c6 solid 3px;
               box-shadow:0px 0px 50px #0000007c;
           }
           
           .srch:hover {
+              box-shadow:0px 0px 50px black;
+              transform: rotate(360deg) scale(1.1);
+          }
+          
+          .srch {
+              position:relative; top:20px; left:15px; box-shadow:0px 0px 50px #0000007c; border-radius:50px; 
+              transition-duration:0.6s; display:inline-block;
           }
           
           .shortcut {
@@ -58,8 +65,7 @@
         <img src="https://file.garden/Z_Zkhskjxktxt43S/Byte%20Studios/byte%20logo.png?v=1749666378121" style="filter: brightness(60%); margin-top:140px;" width="200px">
         <br><br>
         <input id="text">
-        <img src="https://file.garden/Z_Zkhskjxktxt43S/abcdefghijklmnopqrztuvexyz/serch.svg" style="position:relative; top:20px; left:15px; box-shadow:0px 0px 50px #0000007c; border-radius:50px; 
-              transition-duration:0.4s;" class="srch" onclick="search()"><br><br><br><br>
+        <img src="https://file.garden/Z_Zkhskjxktxt43S/abcdefghijklmnopqrztuvexyz/serch.svg" class="srch" onclick="search()"><br><br><br><br>
               
               <div id="shortcuts123">
                   
