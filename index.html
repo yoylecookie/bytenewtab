@@ -1,6 +1,7 @@
 <!Doctype html>
 <html>
     <head>
+
         <title>New Tab
         </title>
         <style>
@@ -9,6 +10,7 @@
           body {
               background-color:white;
               text-align:center;
+              font-family:"Barlow Semi Condensed", "DIN Alternate" ,sans-serif;
           } 
           
           input {
@@ -58,21 +60,71 @@
           
           .settings {
               display:block; margin-left:10px; transition-duration:1s;
+              position: relative;
+    z-index: 10;
           }
           
           .settings:hover {
               transform: rotate(360deg) scale(1.3);
           }
           
-          .led:hover {
+          .icon {
+              position: relative;
+    z-index: 10;
+
+          }
+          
+          .icon:hover {
                transform: scale(1.3);
           }
+          
+          #weather {
+    font-size: 18px;
+    color: #555;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+#info {
+    text-align:right;
+    position:relative;
+    bottom:50px;
+}
+
+#news {
+    color:grey; font-size:10px; border-radius:25px; padding:10px; transition-duration:0.4s;
+}
+
+#news:hover {
+    font-size:20px;
+    background-color:lightgrey;
+}
+
+          
         </style>
     </head>
     <body>
         <a href="settings.html"><img src = "https://www.svgrepo.com/show/524954/settings.svg" width="40px" class="settings"></a>
         
-        <a href="dark.html"><img src = "https://www.svgrepo.com/show/526043/moon-stars.svg" width="40px" style="position:absolute; top:9px; left:70px; transition-duration:1s;" class="led"></a>
+        <a href="dark.html"><img src = "https://www.svgrepo.com/show/526043/moon-stars.svg" width="40px" style="position:absolute; top:9px; left:70px; transition-duration:1s;" class="icon"></a>
+        
+         <a href="https://yoylecookie.github.io/MyNotes/v/raw.html"><img src = "https://www.svgrepo.com/show/511086/note-edit.svg" width="40px" style="position:absolute; top:9px; left:120px; transition-duration:1s;" class="icon"></a>
+         
+         <a onclick = "showiframe()"><img src = "https://www.svgrepo.com/show/486529/apps.svg" width="40px" style="position:absolute; top:9px; left:170px; transition-duration:1s;" class="icon"></a>
+        
+<div id = "info">
+  <p class="time" id="time">Loading time...</p>
+  <div id="weather">Loading weather...</div>
+  </div>
+  
+  <div style="display:none;" id="env">
+  <h2>Environment</h2>
+  <iframe srcdoc="<img src='https://cdn-icons-png.flaticon.com/512/25/25231.png' width='40'><a href='https://github.com/' target='_blank' style='color:black; text-decoration:none; font-family:sans-serif;'>Github</a><br>
+
+<img src='https://static-00.iconduck.com/assets.00/cloudflare-icon-512x512-c1lpcyo0.png' width='40'><a href='https://dash.cloudflare.com/' target='_blank' style='color:black; text-decoration:none; font-family:sans-serif;'>CloudFlare</a><br>"></iframe>
+  <img src="https://www.svgrepo.com/show/510922/close-sm.svg" width="30px" onclick="closeiframe()"></div>
+  
+  <!---project start-->
         
 <input id="shrt" style="display:none;" placeholder="shortcut::">
         <button id="imp" onclick="importSC()" style="display:none;">import</button><div id="br" style="display:none;"><br><br><br><br></div>
@@ -106,6 +158,88 @@
                   <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Scratch.logo.S.png" width="50px" style="position:relative; bottom:0px">
                   <p style="display:inline; position:relative; bottom:15px;">Scratch</p></div></a>
               </div>
+              
+              <br>
+                <div id="news">Loading news...</div>
         <script src="script.js"></script>
+        <script>
+            
+            fetch("https://wttr.in/?format=%l:+%c+%t")
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById("weather").innerText = data;
+  })
+  .catch(error => {
+    document.getElementById("weather").innerText = "Failed to load weather.";
+  });
+            
+            function updateTime() {
+    const now = new Date();
+    const time = now.toLocaleTimeString();
+    const date = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById("time").innerHTML = ${time}<br><span style="font-size:14px; color:gray;">${date}</span>;
+}
+
+
+            // Start updating every second
+setInterval(updateTime, 1000);
+
+// Optional: show time immediately on load
+updateTime();
+
+function showiframe() {
+    document.getElementById("env").style.display = "block";
+}
+
+function closeiframe() {
+    document.getElementById("env").style.display = "none";
+}
+        </script>
+        
+        <script>
+(async () => {
+  const newsDiv = document.getElementById("news");
+
+  try {
+    // Step 1: Fetch CNN Lite homepage
+    const response = await fetch("https://lite.cnn.com/");
+    const html = await response.text();
+
+    // Step 2: Parse homepage and get story links
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    const links = Array.from(doc.querySelectorAll("ul li a"));
+
+    if (links.length === 0) {
+      newsDiv.textContent = "No news found.";
+      return;
+    }
+
+    // Step 3: Pick a random story
+    const randomLink = links[Math.floor(Math.random() * links.length)];
+    const title = randomLink.textContent.trim();
+    const href = randomLink.getAttribute("href");
+    const fullUrl = href.startsWith("http") ? href : https://lite.cnn.com${href};
+
+    // Step 4: Fetch article content
+    const articleRes = await fetch(fullUrl);
+    const articleHtml = await articleRes.text();
+    const articleDoc = parser.parseFromString(articleHtml, "text/html");
+
+    // Step 5: Get article snippet (first paragraph or two)
+    const paragraphs = Array.from(articleDoc.querySelectorAll("article p"));
+    const snippet = paragraphs.slice(0, 2).map(p => p.textContent.trim()).join(" ");
+
+    // Step 6: Display result
+    newsDiv.innerHTML = 
+      <strong><a href="${fullUrl}" target="_blank" rel="noopener">${title}</a></strong>
+      <p style="margin-top: 0.5em;">${snippet}</p>
+    ;
+  } catch (err) {
+    newsDiv.textContent = "Failed to load news.";
+    console.error(err);
+  }
+})();
+</script>
     </body>
 </html>
