@@ -1,44 +1,21 @@
-
-(async () => {
-  const newsDiv = document.getElementById("news");
-
-  try {
-    // Step 1: Fetch CNN Lite homepage
-    const response = await fetch("https://lite.cnn.com/");
-    const html = await response.text();
-
-    // Step 2: Parse homepage and get story links
+fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://feeds.bbci.co.uk/news/rss.xml"))
+  .then(response => response.json())
+  .then(data => {
     const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    const links = Array.from(doc.querySelectorAll("ul li a"));
+    const xml = parser.parseFromString(data.contents, "text/xml");
+    const items = xml.querySelectorAll("item");
+    let html = "<strong>Top News:</strong><br>";
 
-    if (links.length === 0) {
-      newsDiv.textContent = "No news found.";
-      return;
+    for (let i = 0; i < 5; i++) {
+      const title = items[i].querySelector("title").textContent;
+      const link = items[i].querySelector("link").textContent;
+      html += `<a href="${link}" target="_blank">${title}</a><br>`;
     }
 
-    // Step 3: Pick a random story
-    const randomLink = links[Math.floor(Math.random() * links.length)];
-    const title = randomLink.textContent.trim();
-    const href = randomLink.getAttribute("href");
-    const fullUrl = href.startsWith("http") ? href : https://lite.cnn.com${href};
+    document.getElementById("news").innerHTML = html;
+  })
+  .catch(() => {
+    document.getElementById("news").innerText = "Failed to load news.";
+  });
 
-    // Step 4: Fetch article content
-    const articleRes = await fetch(fullUrl);
-    const articleHtml = await articleRes.text();
-    const articleDoc = parser.parseFromString(articleHtml, "text/html");
 
-    // Step 5: Get article snippet (first paragraph or two)
-    const paragraphs = Array.from(articleDoc.querySelectorAll("article p"));
-    const snippet = paragraphs.slice(0, 2).map(p => p.textContent.trim()).join(" ");
-
-    // Step 6: Display result
-    newsDiv.innerHTML = 
-      <strong><a href="${fullUrl}" target="_blank" rel="noopener">${title}</a></strong>
-      <p style="margin-top: 0.5em;">${snippet}</p>
-    ;
-  } catch (err) {
-    newsDiv.textContent = "Failed to load news.";
-    console.error(err);
-  }
-})();
