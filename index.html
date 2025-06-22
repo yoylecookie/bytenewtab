@@ -119,10 +119,16 @@
   
   <div style="display:none;" id="env">
   <h2>Environment</h2>
-  <iframe srcdoc="<img src='https://cdn-icons-png.flaticon.com/512/25/25231.png' width='40'><a href='https://github.com/' target='_blank' style='color:black; text-decoration:none; font-family:sans-serif;'>Github</a><br>
-
-<img src='https://static-00.iconduck.com/assets.00/cloudflare-icon-512x512-c1lpcyo0.png' width='40'><a href='https://dash.cloudflare.com/' target='_blank' style='color:black; text-decoration:none; font-family:sans-serif;'>CloudFlare</a><br>"></iframe>
-  <img src="https://www.svgrepo.com/show/510922/close-sm.svg" width="30px" onclick="closeiframe()"></div>
+  <iframe srcdoc='
+    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="40">
+    <a href="https://github.com/" target="_blank" style="color:black; text-decoration:none; font-family:sans-serif;">Github</a><br>
+    <img src="https://static-00.iconduck.com/assets.00/cloudflare-icon-512x512-c1lpcyo0.png" width="40">
+    <a href="https://dash.cloudflare.com/" target="_blank" style="color:black; text-decoration:none; font-family:sans-serif;">CloudFlare</a><br>
+  ' style="width: 300px; height: 200px; border: none;"></iframe>
+  
+  <br>
+  <img src="https://www.svgrepo.com/show/510922/close-sm.svg" width="30px" onclick="closeiframe()" style="cursor:pointer;">
+</div>
   
   <!---project start-->
         
@@ -164,20 +170,24 @@
         <script src="script.js"></script>
         <script>
             
-            fetch("https://wttr.in/?format=%l:+%c+%t")
-  .then(response => response.text())
+            fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/?format=%l:+%c+%t"))
+  .then(response => response.json())
   .then(data => {
-    document.getElementById("weather").innerText = data;
+    document.getElementById("weather").innerText = data.contents;
   })
   .catch(error => {
     document.getElementById("weather").innerText = "Failed to load weather.";
   });
+
             
             function updateTime() {
     const now = new Date();
     const time = now.toLocaleTimeString();
     const date = now.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    document.getElementById("time").innerHTML = ${time}<br><span style="font-size:14px; color:gray;">${date}</span>;
+    document.getElementById("time").innerHTML = `
+  ${time}<br><span style="font-size:14px; color:gray;">${date}</span>
+`;
+
 }
 
 
