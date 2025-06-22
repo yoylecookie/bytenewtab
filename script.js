@@ -16,6 +16,7 @@
                 if (q.includes("shortcut::")) {
                    document.getElementById('shrt').style.display = "block";
                     document.getElementById('imp').style.display = "block";
+                document.getElementById('br').style.display = "block";
                 } else {
               window.open(beforeurl + encodeURIComponent(q));
                 }
@@ -28,6 +29,7 @@
                 localStorage.setItem("shortcuts", html);
                 document.getElementById('shrt').style.display = "none";
                 document.getElementById('imp').style.display = "none";
+                document.getElementById('br').style.display = "none";
                 
                 
             }
