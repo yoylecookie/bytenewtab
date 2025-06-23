@@ -111,6 +111,11 @@
          <a href="https://yoylecookie.github.io/MyNotes/v/raw.html"><img src = "https://www.svgrepo.com/show/511086/note-edit.svg" width="40px" style="position:absolute; top:9px; left:120px; transition-duration:1s;" class="icon"></a>
          
          <a onclick = "showiframe()"><img src = "https://www.svgrepo.com/show/486529/apps.svg" width="40px" style="position:absolute; top:9px; left:170px; transition-duration:1s;" class="icon"></a>
+         
+         <a onclick = "music()"><img src = "https://www.svgrepo.com/show/526060/music-notes.svg" width="40px" style="position:absolute; top:9px; left:220px; transition-duration:1s;" class="icon"></a>
+         
+         <div id="moosic"></div>
+         
         
 <div id = "info">
   <p class="time" id="time">Loading time...</p>
@@ -218,6 +223,17 @@ function showiframe() {
 
 function closeiframe() {
     document.getElementById("env").style.display = "none";
+}
+
+function music() {
+    music = localStorage.getItem("music");
+    if (music === null) {
+        music = "https://file.garden/Z_Zkhskjxktxt43S/Byte%20OST/Sunshine%20and%20Rainbows.wav"
+    }
+    document.getElementById("moosic").innerHTML = `
+  <audio src="${music}" autoplay >Your browser does not support audio playback.</audio>
+`;
+
 }
         </script>
         
