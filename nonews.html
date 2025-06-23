@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html><head>
 
         <title>Byte New Tab
@@ -146,7 +147,10 @@
         <script src="script.js"></script>
         <script>
             
-           let weatherloc = localStorage.getItem(weatherloc);
+           let weatherloc = localStorage.getItem("weatherloc");
+                if (weatherloc === null) {
+                        weatherloc = ""
+                }
            fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/" + weatherloc + "?format=%22%l:+%c+%t%22"))
   .then(response => response.json())
   .then(data => {
