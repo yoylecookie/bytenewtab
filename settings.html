@@ -16,10 +16,20 @@
     </select>
     <button onclick="savesengine()">save</button>
     <hr>
+    <h2>ToolBar</h2><br>
+    <h3>Weather</h3>
+    <p>Location:</p>
+    <input id = "loc">
+<button onclick="setloc()">Set</button>    
     <script>
       function savesengine() {
           let searchengine = document.getElementById("sengine");
           localStorage.setItem("sengineURL", searchengine.value);
       }  
+
+    function setloc() {
+        let setloc = document.getElementById("loc").value;
+        localStorage.setItem("weatherloc", setloc);
+    }
     </script>
 </body>
