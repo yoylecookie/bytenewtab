@@ -16,11 +16,14 @@
     </select>
     <button onclick="savesengine()">save</button>
     <hr>
-    <h2>ToolBar</h2><br>
+    <h2>ToolBar</h2>
     <h3>Weather</h3>
     <p>Location:</p>
     <input id = "loc">
-<button onclick="setloc()">Set</button>    
+    <h3>Music</h3>
+    <p>Audio URL:</p>
+    <input id = "aud">
+<button onclick="setmusic()">Set</button>    
     <script>
       function savesengine() {
           let searchengine = document.getElementById("sengine");
@@ -30,6 +33,11 @@
     function setloc() {
         let setloc = document.getElementById("loc").value;
         localStorage.setItem("weatherloc", setloc);
+    }
+
+            function setmusic() {
+        let setmusic = document.getElementById("aud").value;
+        localStorage.setItem("music", setmusic);
     }
     </script>
 </body>
