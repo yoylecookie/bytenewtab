@@ -173,12 +173,23 @@
             fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/?format=%l:+%c+%t"))
   .then(response => response.json())
   .then(data => {
-    document.getElementById("weather").innerText = data.contents;
+    let content = data.contents;
+
+    // Extract temperature in Celsius (e.g., +17°C)
+    const tempMatch = content.match(/([+-]?\d+)\s*°C/);
+
+    if (tempMatch) {
+      const celsius = parseInt(tempMatch[1]);
+      const fahrenheit = Math.round((celsius * 9) / 5 + 32);
+      // Replace Celsius temperature with Fahrenheit
+      content = content.replace(/([+-]?\d+)\s*°C/, `${fahrenheit}°F`);
+    }
+
+    document.getElementById("weather").innerText = content;
   })
   .catch(error => {
     document.getElementById("weather").innerText = "Failed to load weather.";
   });
-
             
             function updateTime() {
     const now = new Date();
