@@ -100,6 +100,20 @@
     background-color:lightgrey;
 }
 
+.timer {
+    position:relative; bottom:40px;  border-radius:25px;
+    width:40px;
+    height:40px;
+    transition-duration:0.4s;
+}
+
+.timer:hover {
+    
+    width:300px;
+    height:300px;
+    
+}
+
           
         </style>
     </head>
@@ -113,6 +127,12 @@
          <a onclick = "showiframe()"><img src = "https://www.svgrepo.com/show/486529/apps.svg" width="40px" style="position:absolute; top:9px; left:170px; transition-duration:1s;" class="icon"></a>
          
          <a onclick = "music()"><img src = "https://www.svgrepo.com/show/526060/music-notes.svg" width="40px" style="position:absolute; top:9px; left:220px; transition-duration:1s;" class="icon"></a>
+         
+         <iframe src = "https://stopwatch-app.com/widget/timer?theme=dark&color=lime&hrs=0&min=10&sec=0"class="timer"></iframe>
+         
+         
+         
+        
          
          <div id="moosic"></div>
          
@@ -134,16 +154,18 @@
   <br>
   <img src="https://www.svgrepo.com/show/510922/close-sm.svg" width="30px" onclick="closeiframe()" style="cursor:pointer;">
 </div>
+
   
   <!---project start-->
         
 <input id="shrt" style="display:none;" placeholder="shortcut::">
         <button id="imp" onclick="importSC()" style="display:none;">import</button><div id="br" style="display:none;"><br><br><br><br></div>
-        
         <img src="https://file.garden/Z_Zkhskjxktxt43S/Byte%20Studios/byte%20logo.png?v=1749666378121" style="filter: brightness(60%); margin-top:140px;" width="200px">
         <br><br>
         <input id="text" placeholder="Search The Web...">
         <img src="https://file.garden/Z_Zkhskjxktxt43S/abcdefghijklmnopqrztuvexyz/serch.svg" class="srch" onclick="search()"><br><br><br><br>
+              
+              
               
               <div id="shortcuts123">
                   
