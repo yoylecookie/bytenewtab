@@ -260,7 +260,7 @@ function music() {
 }
 
 function forecast() {
-    fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/?u" + weatherloc))
+    fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/" + weatherloc + "?u"))
   .then(response => response.json())
   .then(data => {
     let content = data.contents;
