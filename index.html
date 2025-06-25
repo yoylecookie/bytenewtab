@@ -82,7 +82,6 @@
     font-size: 18px;
     color: #555;
     font-weight: 500;
-    pointer-events: none;
 }
 
 #info {
@@ -128,6 +127,8 @@
          
          <a onclick = "music()"><img src = "https://www.svgrepo.com/show/526060/music-notes.svg" width="40px" style="position:absolute; top:9px; left:220px; transition-duration:1s;" class="icon"></a>
          
+         <a href="https://mail.proton.me/" target="_blank"><img src = "https://www.svgrepo.com/show/533194/mail-alt.svg" width="40px" style="position:absolute; top:9px; left:270px; transition-duration:1s;" class="icon"></a>
+         
          <iframe src = "https://stopwatch-app.com/widget/timer?theme=dark&color=lime&hrs=0&min=10&sec=0"class="timer"></iframe>
          
          
@@ -139,7 +140,7 @@
         
 <div id = "info">
   <p class="time" id="time">Loading time...</p>
-  <div id="weather">Loading weather...</div>
+  <div id="weather" onclick="forecast()">Loading weather...</div>
   </div>
   
   <div style="display:none;" id="env">
@@ -256,6 +257,32 @@ function music() {
   <audio src="${music}" autoplay >Your browser does not support audio playback.</audio>
 `;
 
+}
+
+function forecast() {
+    fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/" + weatherloc))
+  .then(response => response.json())
+  .then(data => {
+    let content = data.contents;
+
+    // Extract temperature in Celsius (e.g., +17°C)
+    const tempMatch = content.match(/([+-]?\d+)\s*°C/);
+
+    if (tempMatch) {
+      const celsius = parseInt(tempMatch[1]);
+      const fahrenheit = Math.round((celsius * 9) / 5 + 32);
+      // Replace Celsius temperature with Fahrenheit
+      content = content.replace(/([+-]?\d+)\s*°C/, `${fahrenheit}°F`);
+    }
+
+    document.getElementById("weather").innerHTML = content;
+    document.getElementById("weather").style.backgroundColor = "black";
+    document.getElementById("weather").style.borderRadius = "25px";
+    document.getElementById("weather").style.padding = "10px";
+  })
+  .catch(error => {
+    document.getElementById("weather").innerText = "Failed to load weather.";
+  });
 }
         </script>
         
