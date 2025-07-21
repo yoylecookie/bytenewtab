@@ -47,9 +47,15 @@
               border:#c6c6c6 solid 3px;
               border-radius:15px;
               box-shadow:0px 0px 50px #0000003c;
-              padding:40px 30px 5px 30px;
-              display:inline;
+              padding:10px;
+              display:inline-block;
               margin-left:5px;
+              transition-duration:0.4s;
+          }
+          
+          .shortcut:hover {
+              padding:15px;
+              border:#c6c6c6 solid 5px;
           }
           
           a {
@@ -169,28 +175,18 @@
               
               
               <div id="shortcuts123">
+                  <a href="https://byteosc.pages.dev" target="_blank"><div class="shortcut">
+                  <img src="https://file.garden/Z_Zkhskjxktxt43S/Byte%20Studios/byte%20logo.png?v=1749666378121" width="50px" style="filter: brightness(60%);"></div></a> 
                   
-              <a href="https://site-15p.pages.dev" target="_blank"><div class="shortcut">
-                  <img src="https://file.garden/Z_Zkhskjxktxt43S/Byte%20Studios/byte%20logo.png?v=1749666378121" width="50px" style="filter: brightness(60%);">
-                  <p style="display:inline; position:relative; bottom:15px;">Byte Studios</p></div></a>
                   
-                  <a href="https://www.youtube.com" target="_blank"><div class="shortcut">
-                  <img src="https://file.garden/Z_Zkhskjxktxt43S/abcdefghijklmnopqrztuvexyz/playbtn.svg" width="50px" style="position:relative; bottom:5px">
-                  <p style="display:inline; position:relative; bottom:15px;">Youtube</p></div></a><br><br><br>
+                  <a href="https://www.youtube.com/" target="_blank"><div class="shortcut">
+                  <img src="https://imgs.search.brave.com/xKh55Zi1RcV3lT8bA53unw-vWurfOWkT-K17X5LzzFc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL2ZyZWUv/cG5nLTI1Ni9mcmVl/LXlvdXR1YmUtaWNv/bi1kb3dubG9hZC1p/bi1zdmctcG5nLWdp/Zi1maWxlLWZvcm1h/dHMtLWxvZ28tc29j/aWFsLW1lZGlhLWlj/b25zLWNvbG9yLXBh/Y2stbG9nb3MtNDMy/NTYwLnBuZz9mPXdl/YnAmdz0yNTY" width="50px" style="filter: brightness(130%);"></div></a>
                   
-                  <a href="https://discord.com/" target="_blank"><div style="border:#c6c6c6 solid 3px;
-              border-radius:15px;
-              box-shadow:0px 0px 50px #0000003c;
-              padding:40px 50px 5px 10px;
-              display:inline;
-              background-color:white;
-              margin-left:5px;">
-                  <img src="https://logos-world.net/wp-content/uploads/2020/12/Discord-Emblem.png" width="90px" style="">
-                  <p style="display:inline; position:relative; bottom:15px;">Discord</p></div></a>
+                  <a href="https://discord.com/login" target="_blank"><div class="shortcut">
+                  <img src="https://imgs.search.brave.com/zafSJetqOhT25f6JECxnBI760wf4PRm30IAiw44TVe0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4z/ZC5pY29uc2NvdXQu/Y29tLzNkL3ByZW1p/dW0vdGh1bWIvZGlz/Y29yZC0zZC1pbGx1/c3RyYXRpb24tZG93/bmxvYWQtaW4tcG5n/LWJsZW5kLWZieC1n/bHRmLWZpbGUtZm9y/bWF0cy0tbG9nby1z/ZXJ2ZXItdGVjaG5v/bG9neS1zb2NpYWwt/bWVkaWEtbWlzY2Vs/bGFuZW91cy1wYWNr/LWlsbHVzdHJhdGlv/bnMtMzY4NDgxMi5w/bmc_Zj13ZWJw" width="50px" style="filter: brightness(100%);"></div></a>
                   
-                  <a href="https://scratch.mit.edu" target="_blank"><div class="shortcut">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Scratch.logo.S.png" width="50px" style="position:relative; bottom:0px">
-                  <p style="display:inline; position:relative; bottom:15px;">Scratch</p></div></a>
+                  <a href="https://scratch.mit.edu/" target="_blank"><div class="shortcut">
+                  <img src="https://cdn2.steamgriddb.com/icon/969a086e0717a9b496dd0e9a50ec8010.png" width="50px" style="filter: brightness(100%);"></div></a>
               </div>
 
         <script>     window.onload = async function () {       try {         const proxyUrl = 'https://api.allorigins.win/get?url=';         const targetUrl = encodeURIComponent('https://api.ecosia.org/v1/trees/count');         const response = await fetch(proxyUrl + targetUrl);         const data = await response.json();         const parsed = JSON.parse(data.contents);         const count = Number(parsed.count).toLocaleString();          const treeCountSpan = document.getElementById("tree-count");         if (treeCountSpan) {           treeCountSpan.innerText = count;         } else {           console.error("#tree-count not found in DOM.");         }       } catch (err) {         console.error("Ecosia fetch error:", err);         const fallback = document.getElementById("tree-count");         if (fallback) fallback.innerText = "Unavailable";       }     };   </script>
