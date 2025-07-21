@@ -135,6 +135,11 @@
          
          <a href="https://mail.proton.me/" target="_blank"><img src = "https://www.svgrepo.com/show/533194/mail-alt.svg" width="40px" style="position:absolute; top:9px; left:270px; transition-duration:1s;" class="icon"></a>
          
+         <a ><img src = "https://imgs.search.brave.com/XQ3uKnyIUak9nefj4ENiq2cL0LOWN0DQYdolfb4c4co/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9lL2VmL0No/YXRHUFQtTG9nby5z/dmcvNjQwcHgtQ2hh/dEdQVC1Mb2dvLnN2/Zy5wbmc" width="40px" style="position:absolute; top:9px; left:320px; transition-duration:1s;" class="icon"
+         onclick="popitup('https://chatgpt.com')"
+         
+         ></a>
+         
          <iframe src = "https://stopwatch-app.com/widget/timer?theme=dark&color=lime&hrs=0&min=10&sec=0"class="timer"></iframe>
          
          
@@ -282,6 +287,12 @@ function forecast() {
     document.getElementById("weather").innerText = "Failed to load weather.";
   });
 }
+
+function popitup(url) {
+  newwindow = window.open(url, 'name', 'height=600,width=700');
+  if (window.focus) { newwindow.focus() }
+  return false;
+}   
         </script>
         
         <script src="news.js"></script>
