@@ -3,8 +3,9 @@
 <body>
     <h1>Settings</h1><hr><hr>
     <h2>Theme</h2>
-    <p>if you want dark, use this:
-<br>https://yoylecookie.github.io/bytenewtab/dark.html<br><br>if you want light, use this:<br>https://yoylecookie.github.io/bytenewtab/</p>
+    <p>Wallpaper URL:</p>
+    <input id = "theme">
+<button onclick="settheme()">Set</button>    
     <hr>
     <h2>Search Engine</h2>
     <select id="sengine">
@@ -41,6 +42,11 @@
             function setmusic() {
         let setmusic = document.getElementById("aud").value;
         localStorage.setItem("music", setmusic);
+    }
+    
+    function settheme() {
+        let settheme = document.getElementById("theme").value;
+        localStorage.setItem("wallpaper", settheme);
     }
     </script>
 </body>
