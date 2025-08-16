@@ -211,7 +211,7 @@
                         weatherloc = ""
                 }
 
-            document.getElementById("brody").style = "background-image: url('" + wallpaper + "');"
+            document.getElementById("brody").style = "background-image: url('" + wallpaper + "'); background-repeat: no-repeat;"
             
            fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/" + weatherloc + "?format=%22%l:+%c+%t%22"))
   .then(response => response.json())
