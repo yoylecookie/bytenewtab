@@ -122,7 +122,7 @@
           
         </style>
     </head>
-    <body>
+    <body style="" id="brody">
         <a href="settings.html"><img src = "https://www.svgrepo.com/show/524954/settings.svg" width="40px" class="settings"></a>
         
         <a href="dark.html"><img src = "https://www.svgrepo.com/show/526043/moon-stars.svg" width="40px" style="position:absolute; top:9px; left:70px; transition-duration:1s;" class="icon"></a>
@@ -205,6 +205,14 @@
                 if (weatherloc === null) {
                         weatherloc = ""
                 }
+
+            let wallpaper = localStorage.getItem("wallpaper");
+                if (wallpaper === null) {
+                        weatherloc = ""
+                }
+
+            document.getElementById("brody").style = "background-image: url('" + wallpaper + "');"
+            
            fetch("https://api.allorigins.win/get?url=" + encodeURIComponent("https://wttr.in/" + weatherloc + "?format=%22%l:+%c+%t%22"))
   .then(response => response.json())
   .then(data => {
