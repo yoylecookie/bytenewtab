@@ -154,14 +154,18 @@
   <div id="weather" onclick="forecast()">Loading weather...</div>
   </div>
   
-  <div style="display:none;" id="env">
+   <div style="display:none;" id="env">
   <h2>Environment</h2>
   <iframe srcdoc='
-    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" width="40">
     <a href="https://github.com/" target="_blank" style="color:black; text-decoration:none; font-family:sans-serif;">Github</a><br>
-    <img src="https://static-00.iconduck.com/assets.00/cloudflare-icon-512x512-c1lpcyo0.png" width="40">
     <a href="https://dash.cloudflare.com/" target="_blank" style="color:black; text-decoration:none; font-family:sans-serif;">CloudFlare</a><br>
-  ' style="width: 300px; height: 200px; border: none;"></iframe>
+    <a href="https://docs.google.com/" target="_blank" style="color:black; text-decoration:none; font-family:sans-serif;">Google Docs</a><br>
+    <a href="https://docs.google.com/forms/u/0/" target="_blank" style="color:black; text-decoration:none; font-family:sans-serif;">Google Forms</a><br>
+  ' style="width: 300px; height: 200px; border-radius:10px;"></iframe>
+  
+  <br>
+  <img src="https://www.svgrepo.com/show/510922/close-sm.svg" width="30px" onclick="closeiframe()" style="cursor:pointer;">
+</div>
   
   <br>
   <img src="https://www.svgrepo.com/show/510922/close-sm.svg" width="30px" onclick="closeiframe()" style="cursor:pointer;">
