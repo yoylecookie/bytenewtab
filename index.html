@@ -96,15 +96,6 @@
     bottom:50px;
 }
 
-#news {
-    color:grey; font-size:10px; border-radius:25px; padding:10px; transition-duration:0.4s;
-}
-
-#news:hover {
-    font-size:20px;
-    background-color:lightgrey;
-}
-
 .timer {
     position:relative; bottom:40px;  border-radius:25px;
     width:40px;
@@ -197,7 +188,6 @@
         <script>     window.onload = async function () {       try {         const proxyUrl = 'https://api.allorigins.win/get?url=';         const targetUrl = encodeURIComponent('https://api.ecosia.org/v1/trees/count');         const response = await fetch(proxyUrl + targetUrl);         const data = await response.json();         const parsed = JSON.parse(data.contents);         const count = Number(parsed.count).toLocaleString();          const treeCountSpan = document.getElementById("tree-count");         if (treeCountSpan) {           treeCountSpan.innerText = count;         } else {           console.error("#tree-count not found in DOM.");         }       } catch (err) {         console.error("Ecosia fetch error:", err);         const fallback = document.getElementById("tree-count");         if (fallback) fallback.innerText = "Unavailable";       }     };   </script>
               
               <br>
-                <div id="news">Loading news...</div>
         <script src="script.js"></script>
         <script>
             
@@ -302,7 +292,5 @@ function popitup(url) {
   return false;
 }   
         </script>
-        
-        <script src="news.js"></script>
     </body>
 </html>
